@@ -23,7 +23,7 @@ $(".submit").click(async function(){
     // console.log(res)
     if(parseInt(res.code) === 0){
         alert("登录成功")
-        window.location.href="index.html"
+        location.href="index.html"
         return;
     }
     alert("用户名或密码错误")
