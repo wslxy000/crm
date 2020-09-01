@@ -1,4 +1,29 @@
 $(function(){
+    let userId = null;
+    let params = window.location.href.queryURLParams();
+    if(params.hasOwnProperty("id")){
+        userId = params.id;
+        getBaseInfo();
+    }
+    async function getBaseInfo(){
+        let result = await axios.get("/user/info",{
+            params:{ userId }
+        })
+        if(result.code === 0){
+            result = result.data;
+            $(".username").val(result.name);
+            result.sex ==0 ? $("#man").prop('checked',true):$("#woman").prop('checked',true);
+            $(".useremail").val(result.email);
+            $(".userphone").val(result.phone);
+            $(".userdepartment").val(result.departmentId);
+            $(".userjob").val(result.jobId);
+            $(".userdesc").val(result.desc);
+            return;
+        }
+        alert("编辑不成功！！");
+        userId = null;
+    }
+    //下拉显示
     initDeptAndJob()
     async function initDeptAndJob(){
         let departmentData=await queryDepart();
@@ -70,7 +95,7 @@ $(function(){
     $(".useremail").blur(checkemail);
     $(".userphone").blur(checkphone);
     $(".submit").click(async function(){
-        if(!checkname()||!checkemail||!checkphone){
+        if(!checkname()||!checkemail()||!checkphone()){
             alert("数据不合法！");
             return;
         };
@@ -83,6 +108,19 @@ $(function(){
             jobId:$(".userjob").val(),
             desc:$(".userdesc").val().trim()
         }
+        //判断是否为编辑
+        if(userId){
+            params.userId=userId;
+            let result = await axios.post('/user/update',params);
+            if(result.code === 0){
+                alert("修改数据成功！");
+                window.location.href="userlist.html";
+                return;
+            }
+            alert("网络不给力！");
+            return;
+        }
+        //实现添加
         let result = await axios.post("/user/add",params);
         if(result.code === 0){
             alert("添加员工成功！");
