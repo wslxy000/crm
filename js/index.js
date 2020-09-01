@@ -41,8 +41,8 @@ $(function(){
             部门管理
             </h3>
             <nav class="item">
-            <a href="page/userlist.html" target="iframeBox">部门列表</a>
-            <a href="page/useradd.html" target="iframeBox">新增部门</a>
+            <a href="page/departmentlist.html" target="iframeBox">部门列表</a>
+            <a href="page/departmentadd.html" target="iframeBox">新增部门</a>
             </nav>
             </div>
             `
@@ -55,8 +55,8 @@ $(function(){
             职位管理
             </h3>
             <nav class="item">
-            <a href="page/userlist.html" target="iframeBox">职位列表</a>
-            <a href="page/useradd.html" target="iframeBox">新增职位</a>
+            <a href="page/joblist.html" target="iframeBox">职位列表</a>
+            <a href="page/jobadd.html" target="iframeBox">新增职位</a>
             </nav>
             </div>
             `
@@ -69,9 +69,9 @@ $(function(){
             客户管理
             </h3>
             <nav class="item">
-            <a href="page/userlist.html" target="iframeBox">我的客户</a>
-            <a href="page/userlist.html" target="iframeBox">全部客户</a>
-            <a href="page/useradd.html" target="iframeBox">新增客户</a>
+            <a href="page/customerlist.html?lx=my" target="iframeBox">我的客户</a>
+            <a href="page/customerlist.html?lx=all" target="iframeBox">全部客户</a>
+            <a href="page/customeradd.html" target="iframeBox">新增客户</a>
             </nav>
             </div>
             `
